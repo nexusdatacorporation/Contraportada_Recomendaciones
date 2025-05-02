@@ -3,6 +3,7 @@
     <x:Property Name="in_bro_chatGPT" Type="InArgument(ui:Browser)" />
     <x:Property Name="in_str_CuerpoMensaje" Type="InArgument(x:String)" />
     <x:Property Name="out_str_RespuestaChatGPT" Type="OutArgument(x:String)" />
+    <x:Property Name="in_str_PromptChatGPT" Type="InArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
@@ -92,7 +93,7 @@
       <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Consulta_ChatGPT" sap:VirtualizedContainerService.HintSize="1586,1161.04" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Consulta_ChatGPT" sap:VirtualizedContainerService.HintSize="1580,990" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -116,7 +117,7 @@
                 <OutArgument x:TypeArguments="x:String">[str_Prompt]</OutArgument>
               </ui:AssignOperation.To>
               <ui:AssignOperation.Value>
-                <InArgument x:TypeArguments="x:String" xml:space="preserve">Actúa como un experto en literatura. A partir de la siguiente consulta de un usuario (filtrada previamente para asegurar que esté relacionada con recomendaciones de libros), responde con un único objeto JSON que represente un libro relevante. Solo debes rellenar los campos mencionados en la consulta: si el usuario menciona un título, rellena solo el campo 'titulo'; si menciona un autor, rellena 'autor'; si menciona un tema, estilo o género, inclúyelo en 'sinopsis'; si proporciona varios datos, completa todos los que estén presentes. Los campos disponibles son: 'titulo', 'autor', 'isbn', 'editorial', 'sinopsis'. Deja vacíos los campos no mencionados. Si la consulta no proporciona información suficiente, responde con este JSON: { 'SL-01': 'El contenido del correo es insuficiente para realizar la búsqueda de libros' }. Si la consulta no está relacionada con libros o está incompleta, responde con este JSON: { 'SL-02': 'Contenido de correo no corresponde con consulta de libros' }. No agregues ningún texto fuera del JSON. Solo responde con el objeto JSON o el objeto de error, según corresponda. Consulta del usuario:  </InArgument>
+                <InArgument x:TypeArguments="x:String">[in_str_PromptChatGPT]</InArgument>
               </ui:AssignOperation.Value>
             </ui:AssignOperation>
             <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
