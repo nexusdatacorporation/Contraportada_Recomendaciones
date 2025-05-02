@@ -2,6 +2,7 @@
   <x:Members>
     <x:Property sap2010:Annotation.AnnotationText="Transaction item to be processed." Name="in_TransactionItem" Type="InArgument(ui:QueueItem)" />
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_bro_AddTodosTusLibros" Type="InArgument(ui:Browser)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
@@ -123,7 +124,12 @@
       <AssemblyReference>DeserializeJSON327c7.HMTxK41dFfG1HqR701QlQ7n1</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1580,3629" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <sap:WorkflowViewStateService.ViewState>
+    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+      <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
+    </scg:Dictionary>
+  </sap:WorkflowViewStateService.ViewState>
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1580,3397" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="str_Remitente" />
       <Variable x:TypeArguments="s:Exception" Name="sys_errorSystem" />
@@ -131,6 +137,7 @@
       <Variable x:TypeArguments="x:String" Name="str_Asunto" />
       <Variable x:TypeArguments="x:String" Name="str_Cuerpo" />
       <Variable x:TypeArguments="x:String" Name="str_ChatGPT" />
+      <Variable x:TypeArguments="ui:Browser" Name="bro_TodosTusLibros" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -140,7 +147,7 @@
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="513,173" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
     <ui:Comment sap:VirtualizedContainerService.HintSize="513,145" sap2010:WorkflowViewState.IdRef="Comment_1" Text="Por comodidad podemos extraer los datos del elemento al principio del Process. Asi tenemos la falicidad de proporcionarselo al invoke que queramos. " />
-    <Sequence DisplayName="ObtenerDatosTransaccion" sap:VirtualizedContainerService.HintSize="513,792" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence DisplayName="ObtenerDatosTransaccion" sap:VirtualizedContainerService.HintSize="513,446" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <Sequence.Variables>
         <Variable x:TypeArguments="njl:JObject" Name="jso_ChatGPT" />
       </Sequence.Variables>
@@ -188,9 +195,7 @@
           </scg:List>
         </ui:MultipleAssign.AssignOperations>
       </ui:MultipleAssign>
-      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="479,173" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[str_Remitente + vbCrLf + &#xA;str_Asunto + vbCrLf +&#xA;str_Cuerpo + vbCrLf +&#xA;str_ChatGPT]" />
-      <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="479,122" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[jso_ChatGPT]" JsonSample="" JsonString="[str_ChatGPT]" />
-      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="479,164" sap2010:WorkflowViewState.IdRef="LogMessage_6" Message="[jso_ChatGPT(&quot;autor&quot;)]" />
+      <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="479,113" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[jso_ChatGPT]" JsonSample="" JsonString="[str_ChatGPT]" />
     </Sequence>
     <ui:Comment sap:VirtualizedContainerService.HintSize="513,183" sap2010:WorkflowViewState.IdRef="Comment_2" Text="Nuestras dos variables que almacenan error de sistema y de negocio, respectivamente, al entrar en el Process las ponemos a Nothing por si almacenan el error de un elemento de cola anterior, las limpiamos y empezamos de nuevo" />
     <Assign sap:VirtualizedContainerService.HintSize="513,114" sap2010:WorkflowViewState.IdRef="Assign_5">
@@ -210,12 +215,21 @@
       </Assign.Value>
     </Assign>
     <ui:Comment sap:VirtualizedContainerService.HintSize="513,396" sap2010:WorkflowViewState.IdRef="Comment_3" Text="Aqui vamos a tener la siguiente estructura: &#xA;&#xA;Invoke&#xA;&#xA;If system exception: &#xA;&#xA;throw en caso de que si&#xA;&#xA;If business exception: &#xA;&#xA;gestiono excepcion &#xA;&#xA;throw en caso de que si&#xA;&#xA;Invoke &#xA;&#xA;.... y de nuevo lo mismo" />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="prueba - Invoke Workflow File (Modules\prueba.xaml)" sap:VirtualizedContainerService.HintSize="513,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Modules\prueba.xaml">
+    <Assign sap:VirtualizedContainerService.HintSize="513,114" sap2010:WorkflowViewState.IdRef="Assign_7">
+      <Assign.To>
+        <OutArgument x:TypeArguments="ui:Browser">[bro_TodosTusLibros]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="ui:Browser">[in_bro_AddTodosTusLibros]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="prueba - Invoke Workflow File (Modules\prueba.xaml)" sap:VirtualizedContainerService.HintSize="513,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Modules\Extraer_Libros.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <OutArgument x:TypeArguments="s:Exception" x:Key="out_errorSystem">[sys_errorSystem]</OutArgument>
         <OutArgument x:TypeArguments="ui:BusinessRuleException" x:Key="out_errorBusiness">[bus_errorBusiness]</OutArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_str_urlTodosTusLibros">[in_Config("urlTodosTusLibros").ToString]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_str_ChatGPT">[str_ChatGPT]</InArgument>
+        <InArgument x:TypeArguments="ui:Browser" x:Key="in_bro_TodosTusLibros">[bro_TodosTusLibros]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <If Condition="[sys_errorSystem is Nothing]" sap:VirtualizedContainerService.HintSize="513,535" sap2010:WorkflowViewState.IdRef="If_1">
