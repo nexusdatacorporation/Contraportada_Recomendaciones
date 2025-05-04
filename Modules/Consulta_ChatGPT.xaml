@@ -93,7 +93,7 @@
       <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Consulta_ChatGPT" sap:VirtualizedContainerService.HintSize="1586,1161.04" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Consulta_ChatGPT" sap:VirtualizedContainerService.HintSize="1335,1182.04" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -186,7 +186,7 @@
                   </ui:CursorPosition>
                 </ui:Click.CursorPosition>
                 <ui:Click.Target>
-                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="487b7202-6826-467f-9e74-6ce74950a693" InformativeScreenshot="a9c42b4c7492ccaa6b9c2aee00f73e97" Selector="&lt;html app='chrome.exe' title='*' /&gt;&lt;webctrl aria-label='Copiar' tag='BUTTON' /&gt;">
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="487b7202-6826-467f-9e74-6ce74950a693" InformativeScreenshot="a9c42b4c7492ccaa6b9c2aee00f73e97" Selector="&lt;html app='chrome.exe' /&gt;&lt;webctrl aaname='Copiar' aria-label='Copiar' tag='BUTTON' visibleinnertext='Copiar' /&gt;">
                     <ui:Target.TimeoutMS>
                       <InArgument x:TypeArguments="x:Int32" />
                     </ui:Target.TimeoutMS>

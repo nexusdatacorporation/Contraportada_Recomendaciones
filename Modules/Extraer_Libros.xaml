@@ -50,6 +50,7 @@
       <x:String>System.Dynamic</x:String>
       <x:String>System.Collections.Specialized</x:String>
       <x:String>UiPath.Web.Activities</x:String>
+      <x:String>System.Numerics</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -105,9 +106,10 @@
       <AssemblyReference>Newtonsoft.Json</AssemblyReference>
       <AssemblyReference>System.Collections.Specialized</AssemblyReference>
       <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="prueba" sap:VirtualizedContainerService.HintSize="1580,4496" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="prueba" sap:VirtualizedContainerService.HintSize="1580,4839" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="ui:Browser" Name="bro_TodosTusLibors" />
       <Variable x:TypeArguments="x:Boolean" Name="boo_CookiesPopUP" />
@@ -118,7 +120,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="Extraccion de libros" sap:VirtualizedContainerService.HintSize="606,4425" sap2010:WorkflowViewState.IdRef="Sequence_12">
+    <Sequence DisplayName="Extraccion de libros" sap:VirtualizedContainerService.HintSize="622,3501" sap2010:WorkflowViewState.IdRef="Sequence_12">
       <Sequence.Variables>
         <Variable x:TypeArguments="sd:DataTable" Name="dt_libros" />
         <Variable x:TypeArguments="ui:Browser" Name="bro_TodosTusLibros" />
@@ -130,22 +132,23 @@
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:Comment sap:VirtualizedContainerService.HintSize="572,280" sap2010:WorkflowViewState.IdRef="Comment_1" Text="Con los datos  estructurados por ChatGPT, se accederá al buscador avanzado de la web  todostuslibros, y se aplicarán los filtros según los datos disponibles en el correo  de entrada.  &#xA;&#xA;• Acceso al buscador avanzado. &#xA;&#xA;• Rellenar los campos como título, autor, ISBN, etc., según estén &#xA;disponibles. &#xA;&#xA;• Obtener la lista de libros encontrados. " />
-      <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="572,122" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[jso_ChatGPT]" JsonSample="" JsonString="[in_str_ChatGPT]" />
-      <ui:BuildDataTable DataTable="[dt_libros]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="572,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Titulo&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Autor&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;ISBN&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
-      <ui:BrowserScope SearchScope="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" Browser="[in_bro_TodosTusLibros]" BrowserType="Chrome" DisplayName="Attach Browser" sap:VirtualizedContainerService.HintSize="572,3839" sap2010:WorkflowViewState.IdRef="BrowserScope_1">
+      <ui:Comment sap:VirtualizedContainerService.HintSize="588,280" sap2010:WorkflowViewState.IdRef="Comment_1" Text="Con los datos  estructurados por ChatGPT, se accederá al buscador avanzado de la web  todostuslibros, y se aplicarán los filtros según los datos disponibles en el correo  de entrada.  &#xA;&#xA;• Acceso al buscador avanzado. &#xA;&#xA;• Rellenar los campos como título, autor, ISBN, etc., según estén &#xA;disponibles. &#xA;&#xA;• Obtener la lista de libros encontrados. " />
+      <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Convertimos en un diccionario el JSON recibido de ChatGPT" sap:VirtualizedContainerService.HintSize="588,122" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[jso_ChatGPT]" JsonSample="" JsonString="[in_str_ChatGPT]" />
+      <ui:BuildDataTable DataTable="[dt_libros]" DisplayName="Creamos la tabla con los campos de resultado." sap:VirtualizedContainerService.HintSize="588,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Titulo&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Autor&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;ISBN&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
+      <ui:BrowserScope SearchScope="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" Browser="[in_bro_TodosTusLibros]" BrowserType="Chrome" DisplayName="Consultamos en la misma ventana del navegador" sap:VirtualizedContainerService.HintSize="588,2915" sap2010:WorkflowViewState.IdRef="BrowserScope_1">
         <ui:BrowserScope.Body>
           <ActivityAction x:TypeArguments="x:Object">
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
             </ActivityAction.Argument>
-            <Sequence sap:VirtualizedContainerService.HintSize="538,3707" sap2010:WorkflowViewState.IdRef="Sequence_35">
+            <Sequence DisplayName="Busqueda de resultados de hasta 3 libros" sap:VirtualizedContainerService.HintSize="554,2783" sap2010:WorkflowViewState.IdRef="Sequence_35">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="504,3647" sap2010:WorkflowViewState.IdRef="Sequence_13">
+              <Sequence DisplayName="Ejecutamos mientras queden libros y sean menos de tres resultados" sap:VirtualizedContainerService.HintSize="520,2723" sap2010:WorkflowViewState.IdRef="Sequence_13">
                 <Sequence.Variables>
                   <Variable x:TypeArguments="x:Int32" Default="1" Name="int_contador" />
                   <Variable x:TypeArguments="x:Int32" Default="24" Name="int_contadorISB" />
@@ -158,8 +161,8 @@
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="470,57" sap2010:WorkflowViewState.IdRef="MaximizeWindow_1" />
-                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Type Into 'INPUT  titulo'" EmptyField="True" sap:VirtualizedContainerService.HintSize="470,187" sap2010:WorkflowViewState.IdRef="TypeInto_1" SimulateType="True" Text="[jso_ChatGPT(&quot;autor&quot;).ToString]">
+                <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="486,57" sap2010:WorkflowViewState.IdRef="MaximizeWindow_1" />
+                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Rellenemos el camo autor. " EmptyField="True" sap:VirtualizedContainerService.HintSize="486,57" sap2010:WorkflowViewState.IdRef="TypeInto_1" SimulateType="True" Text="[jso_ChatGPT(&quot;autor&quot;).ToString]">
                   <ui:TypeInto.Target>
                     <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="3808b593-df36-405b-94b7-1df4f10e485c" InformativeScreenshot="9ad85a98eae68f26bf7c12ce577761a0" Selector="&lt;webctrl id='autor' tag='INPUT' /&gt;" WaitForReady="COMPLETE">
                       <ui:Target.TimeoutMS>
@@ -167,8 +170,14 @@
                       </ui:Target.TimeoutMS>
                     </ui:Target>
                   </ui:TypeInto.Target>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
                 </ui:TypeInto>
-                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Type Into 'INPUT  titulo'" EmptyField="True" sap:VirtualizedContainerService.HintSize="470,187" sap2010:WorkflowViewState.IdRef="TypeInto_2" SimulateType="True" Text="[jso_ChatGPT(&quot;titulo&quot;).ToString]">
+                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Rellenamos el campo titulo" EmptyField="True" sap:VirtualizedContainerService.HintSize="486,57" sap2010:WorkflowViewState.IdRef="TypeInto_2" SimulateType="True" Text="[jso_ChatGPT(&quot;titulo&quot;).ToString]">
                   <ui:TypeInto.Target>
                     <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="3808b593-df36-405b-94b7-1df4f10e485c" InformativeScreenshot="49029eb2fd60ccdf626e383b2ce61558" Selector="&lt;webctrl id='titulo' tag='INPUT' /&gt;" WaitForReady="COMPLETE">
                       <ui:Target.TimeoutMS>
@@ -176,8 +185,14 @@
                       </ui:Target.TimeoutMS>
                     </ui:Target>
                   </ui:TypeInto.Target>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
                 </ui:TypeInto>
-                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Type Into 'INPUT  titulo'" EmptyField="True" sap:VirtualizedContainerService.HintSize="470,187" sap2010:WorkflowViewState.IdRef="TypeInto_3" SimulateType="True" Text="[jso_ChatGPT(&quot;isbn&quot;).ToString]">
+                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Rellenamos el campo ISBN" EmptyField="True" sap:VirtualizedContainerService.HintSize="486,57" sap2010:WorkflowViewState.IdRef="TypeInto_3" SimulateType="True" Text="[jso_ChatGPT(&quot;isbn&quot;).ToString]">
                   <ui:TypeInto.Target>
                     <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="3808b593-df36-405b-94b7-1df4f10e485c" InformativeScreenshot="b677bfd141fe4a546050a875fc7e0640" Selector="&lt;webctrl id='isbn' tag='INPUT' /&gt;" WaitForReady="COMPLETE">
                       <ui:Target.TimeoutMS>
@@ -185,8 +200,14 @@
                       </ui:Target.TimeoutMS>
                     </ui:Target>
                   </ui:TypeInto.Target>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
                 </ui:TypeInto>
-                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Type Into 'INPUT  titulo'" EmptyField="True" sap:VirtualizedContainerService.HintSize="470,187" sap2010:WorkflowViewState.IdRef="TypeInto_4" SimulateType="True" Text="[jso_ChatGPT(&quot;editorial&quot;).ToString]">
+                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Rellenamos el campo Editorial" EmptyField="True" sap:VirtualizedContainerService.HintSize="486,57" sap2010:WorkflowViewState.IdRef="TypeInto_4" SimulateType="True" Text="[jso_ChatGPT(&quot;editorial&quot;).ToString]">
                   <ui:TypeInto.Target>
                     <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="3808b593-df36-405b-94b7-1df4f10e485c" InformativeScreenshot="a17f26206a7841b96619f82e4e6233a8" Selector="&lt;webctrl id='editorial' tag='INPUT' /&gt;" WaitForReady="COMPLETE">
                       <ui:Target.TimeoutMS>
@@ -194,8 +215,14 @@
                       </ui:Target.TimeoutMS>
                     </ui:Target>
                   </ui:TypeInto.Target>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
                 </ui:TypeInto>
-                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Type Into 'INPUT  titulo'" EmptyField="True" sap:VirtualizedContainerService.HintSize="470,187" sap2010:WorkflowViewState.IdRef="TypeInto_5" SimulateType="True" Text="[jso_ChatGPT(&quot;sinopsis&quot;).ToString]">
+                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Rellenamos el campo Sipnosis" EmptyField="True" sap:VirtualizedContainerService.HintSize="486,57" sap2010:WorkflowViewState.IdRef="TypeInto_5" SimulateType="True" Text="[jso_ChatGPT(&quot;sinopsis&quot;).ToString]">
                   <ui:TypeInto.Target>
                     <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="3808b593-df36-405b-94b7-1df4f10e485c" InformativeScreenshot="aebc7dd511c67996a4524c87131d49c3" Selector="&lt;webctrl id='summary' tag='INPUT' /&gt;" WaitForReady="COMPLETE">
                       <ui:Target.TimeoutMS>
@@ -203,19 +230,25 @@
                       </ui:Target.TimeoutMS>
                     </ui:Target>
                   </ui:TypeInto.Target>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
                 </ui:TypeInto>
-                <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="470,57" sap2010:WorkflowViewState.IdRef="CommentOut_5">
+                <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="486,57" sap2010:WorkflowViewState.IdRef="CommentOut_5">
                   <ui:CommentOut.Body>
-                    <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,108" sap2010:WorkflowViewState.IdRef="Sequence_33">
+                    <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="452,367" sap2010:WorkflowViewState.IdRef="Sequence_33">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <If Condition="[Not String.IsNullOrWhiteSpace(jso_ChatGPT(&quot;autor&quot;).ToString)]" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="If_3">
+                      <If Condition="[Not String.IsNullOrWhiteSpace(jso_ChatGPT(&quot;autor&quot;).ToString)]" sap:VirtualizedContainerService.HintSize="418,307" sap2010:WorkflowViewState.IdRef="If_3">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
@@ -247,7 +280,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:CommentOut>
-                <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="470,57" sap2010:WorkflowViewState.IdRef="CommentOut_4">
+                <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="486,57" sap2010:WorkflowViewState.IdRef="CommentOut_4">
                   <ui:CommentOut.Body>
                     <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,108" sap2010:WorkflowViewState.IdRef="Sequence_32">
                       <sap:WorkflowViewStateService.ViewState>
@@ -290,7 +323,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:CommentOut>
-                <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="470,57" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+                <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="486,57" sap2010:WorkflowViewState.IdRef="CommentOut_3">
                   <ui:CommentOut.Body>
                     <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,108" sap2010:WorkflowViewState.IdRef="Sequence_31">
                       <sap:WorkflowViewStateService.ViewState>
@@ -333,7 +366,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:CommentOut>
-                <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="470,57" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+                <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="486,57" sap2010:WorkflowViewState.IdRef="CommentOut_2">
                   <ui:CommentOut.Body>
                     <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,108" sap2010:WorkflowViewState.IdRef="Sequence_30">
                       <sap:WorkflowViewStateService.ViewState>
@@ -376,7 +409,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:CommentOut>
-                <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="470,57" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+                <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="486,57" sap2010:WorkflowViewState.IdRef="CommentOut_1">
                   <ui:CommentOut.Body>
                     <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,108" sap2010:WorkflowViewState.IdRef="Sequence_29">
                       <sap:WorkflowViewStateService.ViewState>
@@ -419,7 +452,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:CommentOut>
-                <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'BUTTON'" sap:VirtualizedContainerService.HintSize="470,139" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT">
+                <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Hacemos click en el campo buscar" sap:VirtualizedContainerService.HintSize="486,57" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT">
                   <ui:Click.CursorPosition>
                     <ui:CursorPosition Position="Center">
                       <ui:CursorPosition.OffsetX>
@@ -431,7 +464,7 @@
                     </ui:CursorPosition>
                   </ui:Click.CursorPosition>
                   <ui:Click.Target>
-                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="c344cb71-c9f7-427c-bc06-dfbcd314ddad" InformativeScreenshot="2cd26cd43df0d9de12ce27b0d5afd75f" Selector="&lt;webctrl parentid='app' tag='BUTTON' type='submit' /&gt;">
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="c344cb71-c9f7-427c-bc06-dfbcd314ddad" InformativeScreenshot="4c942678e995b8ce879105f92f9d478a" Selector="&lt;webctrl parentid='app' tag='BUTTON' type='submit' /&gt;">
                       <ui:Target.TimeoutMS>
                         <InArgument x:TypeArguments="x:Int32" />
                       </ui:Target.TimeoutMS>
@@ -440,8 +473,14 @@
                       </ui:Target.WaitForReady>
                     </ui:Target>
                   </ui:Click.Target>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
                 </ui:Click>
-                <Assign sap:VirtualizedContainerService.HintSize="470,114" sap2010:WorkflowViewState.IdRef="Assign_3">
+                <Assign DisplayName="Inicializamos la variable contador" sap:VirtualizedContainerService.HintSize="486,114" sap2010:WorkflowViewState.IdRef="Assign_3">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:Int32">[int_contador]</OutArgument>
                   </Assign.To>
@@ -449,14 +488,14 @@
                     <InArgument x:TypeArguments="x:Int32">1</InArgument>
                   </Assign.Value>
                 </Assign>
-                <ui:UiElementExists DisplayName="Element Exists 'LI  book_978-84-9105-75...'" sap:VirtualizedContainerService.HintSize="470,139" sap2010:WorkflowViewState.IdRef="UiElementExists_3">
+                <ui:UiElementExists DisplayName="Comprobamos que existe el primer resultado" sap:VirtualizedContainerService.HintSize="486,139" sap2010:WorkflowViewState.IdRef="UiElementExists_3">
                   <ui:UiElementExists.Exists>
                     <OutArgument x:TypeArguments="x:Boolean">
                       <VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="boo_existeLibro" sap2010:WorkflowViewState.IdRef="VisualBasicReference`1_1" />
                     </OutArgument>
                   </ui:UiElementExists.Exists>
                   <ui:UiElementExists.Target>
-                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="8b6b67d4-2c8b-4630-b1bf-7e1a7824d9c5" InformativeScreenshot="f20ac2acc71c75f5e65379ef46f95bef" Selector="[string.Format(&quot;&lt;webctrl id='book_*' tag='LI' class='book row' idx='{0}' /&gt;&quot;, int_contador)]">
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="8b6b67d4-2c8b-4630-b1bf-7e1a7824d9c5" InformativeScreenshot="b7b8962c8fd7a3d0e2a0723ff2372f56" Selector="[string.Format(&quot;&lt;webctrl id='book_*' tag='LI' class='book row' idx='{0}' /&gt;&quot;, int_contador)]">
                       <ui:Target.TimeoutMS>
                         <InArgument x:TypeArguments="x:Int32" />
                       </ui:Target.TimeoutMS>
@@ -466,19 +505,19 @@
                     </ui:Target>
                   </ui:UiElementExists.Target>
                 </ui:UiElementExists>
-                <If Condition="[Not boo_existeLibro]" sap:VirtualizedContainerService.HintSize="470,400" sap2010:WorkflowViewState.IdRef="If_7">
+                <If Condition="[Not boo_existeLibro]" DisplayName="Si no existe el primer resultado lanzamos excepcion de negocio SL-0X" sap:VirtualizedContainerService.HintSize="486,400" sap2010:WorkflowViewState.IdRef="If_7">
                   <If.Then>
-                    <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,173" sap2010:WorkflowViewState.IdRef="Sequence_23">
+                    <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="417,173" sap2010:WorkflowViewState.IdRef="Sequence_23">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <Throw Exception="[new BusinessRuleException(&quot;SL-0X&quot;)]" sap:VirtualizedContainerService.HintSize="382,113" sap2010:WorkflowViewState.IdRef="Throw_3" />
+                      <Throw Exception="[new BusinessRuleException(&quot;SL-0X&quot;)]" sap:VirtualizedContainerService.HintSize="383,113" sap2010:WorkflowViewState.IdRef="Throw_3" />
                     </Sequence>
                   </If.Then>
                   <If.Else>
-                    <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,89" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                    <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="417,89" sap2010:WorkflowViewState.IdRef="Sequence_24">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -487,9 +526,9 @@
                     </Sequence>
                   </If.Else>
                 </If>
-                <ui:InterruptibleWhile CurrentIndex="{x:Null}" Condition="[boo_existeLibro]" DisplayName="While" sap:VirtualizedContainerService.HintSize="470,1392" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
+                <ui:InterruptibleWhile CurrentIndex="{x:Null}" DisplayName="Ejecutamos hasta 3 veces la extracción de resultados de búsqueda de libros" sap:VirtualizedContainerService.HintSize="486,1083" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
                   <ui:InterruptibleWhile.Body>
-                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="468,1262" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="484,953" sap2010:WorkflowViewState.IdRef="Sequence_14">
                       <Sequence.Variables>
                         <Variable x:TypeArguments="x:String" Name="str_titulo" />
                         <Variable x:TypeArguments="x:String" Name="str_autor" />
@@ -500,9 +539,9 @@
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'A '" sap:VirtualizedContainerService.HintSize="434,139" sap2010:WorkflowViewState.IdRef="GetValue_1">
+                      <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Extracción título" sap:VirtualizedContainerService.HintSize="450,139" sap2010:WorkflowViewState.IdRef="GetValue_1">
                         <ui:GetValue.Target>
-                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="fa957d28-cd9a-4775-a13c-e3553945ebca" InformativeScreenshot="a8ee8a1e7cca133bc279b1a662fcbf74" Selector="[string.Format(&quot;&lt;webctrl id='book_*' tag='LI' class='book row' idx='{0}' /&gt;&lt;webctrl tag='H2' /&gt;&quot;, int_contador)]">
+                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="fa957d28-cd9a-4775-a13c-e3553945ebca" InformativeScreenshot="f4a42174dcf56973c8e4c75fb9336fa6" Selector="[string.Format(&quot;&lt;webctrl id='book_*' tag='LI' class='book row' idx='{0}' /&gt;&lt;webctrl tag='H2' /&gt;&quot;, int_contador)]">
                             <ui:Target.TimeoutMS>
                               <InArgument x:TypeArguments="x:Int32" />
                             </ui:Target.TimeoutMS>
@@ -515,9 +554,9 @@
                           <OutArgument x:TypeArguments="x:String">[str_titulo]</OutArgument>
                         </ui:GetValue.Value>
                       </ui:GetValue>
-                      <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'H3'" sap:VirtualizedContainerService.HintSize="434,139" sap2010:WorkflowViewState.IdRef="GetValue_2">
+                      <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Extracción del autor" sap:VirtualizedContainerService.HintSize="450,139" sap2010:WorkflowViewState.IdRef="GetValue_2">
                         <ui:GetValue.Target>
-                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="c9e769cd-a4cd-4b11-8700-dcefc896930e" InformativeScreenshot="f7641b5d250d35575ccb764249c2f5b9" Selector="[string.Format(&quot;&lt;webctrl id='book_*' tag='LI' class='book row' idx='{0}' /&gt;&lt;webctrl tag='H3' /&gt;&quot;, int_contador)]">
+                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="c9e769cd-a4cd-4b11-8700-dcefc896930e" InformativeScreenshot="aba7aa0cd1d5da4028f961729cd2c59b" Selector="[string.Format(&quot;&lt;webctrl id='book_*' tag='LI' class='book row' idx='{0}' /&gt;&lt;webctrl tag='H3' /&gt;&quot;, int_contador)]">
                             <ui:Target.TimeoutMS>
                               <InArgument x:TypeArguments="x:Int32" />
                             </ui:Target.TimeoutMS>
@@ -530,12 +569,12 @@
                           <OutArgument x:TypeArguments="x:String">[str_autor]</OutArgument>
                         </ui:GetValue.Value>
                       </ui:GetValue>
-                      <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="aaname" DisplayName="Get Attribute 'DIV'" sap:VirtualizedContainerService.HintSize="434,235" sap2010:WorkflowViewState.IdRef="GetAttribute_1">
+                      <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="aaname" DisplayName="Extracción ISBN" sap:VirtualizedContainerService.HintSize="450,235" sap2010:WorkflowViewState.IdRef="GetAttribute_1">
                         <ui:GetAttribute.Result>
                           <OutArgument x:TypeArguments="x:String">[str_isbn]</OutArgument>
                         </ui:GetAttribute.Result>
                         <ui:GetAttribute.Target>
-                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="dd3e7d8a-69c7-4168-9436-dd4e9a1a5b12" InformativeScreenshot="0c64563e1a25ed401159805cbb0a5a06" Selector="[string.Format(&quot;&lt;webctrl tag='DIV' class='data_isbn d-none d-md-block' idx='{0}' /&gt;&quot;, int_contador)]">
+                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="dd3e7d8a-69c7-4168-9436-dd4e9a1a5b12" InformativeScreenshot="a06389a6e1151567d884ee3ca7c6cf9e" Selector="[string.Format(&quot;&lt;webctrl tag='DIV' class='data_isbn d-none d-md-block' idx='{0}' /&gt;&quot;, int_contador)]">
                             <ui:Target.TimeoutMS>
                               <InArgument x:TypeArguments="x:Int32" />
                             </ui:Target.TimeoutMS>
@@ -545,8 +584,8 @@
                           </ui:Target>
                         </ui:GetAttribute.Target>
                       </ui:GetAttribute>
-                      <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object() { str_titulo, str_autor, str_isbn}]" DataTable="[dt_libros]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="434,218" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
-                      <Assign sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_4">
+                      <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object() { str_titulo, str_autor, str_isbn}]" DataTable="[dt_libros]" DisplayName="Añadimos en la tabla el resultado de la búsqueda" sap:VirtualizedContainerService.HintSize="450,218" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+                      <Assign DisplayName="Incrementamos el contador" sap:VirtualizedContainerService.HintSize="450,114" sap2010:WorkflowViewState.IdRef="Assign_4">
                         <Assign.To>
                           <OutArgument x:TypeArguments="x:Int32">[int_contador]</OutArgument>
                         </Assign.To>
@@ -554,42 +593,63 @@
                           <InArgument x:TypeArguments="x:Int32">[int_contador+1]</InArgument>
                         </Assign.Value>
                       </Assign>
-                      <If Condition="[int_contador &gt; 3]" sap:VirtualizedContainerService.HintSize="434,357" sap2010:WorkflowViewState.IdRef="If_8">
-                        <If.Then>
-                          <Sequence sap2010:Annotation.AnnotationText="" DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,139" sap2010:WorkflowViewState.IdRef="Sequence_25">
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                            <ui:Break sap:VirtualizedContainerService.HintSize="382,48" sap2010:WorkflowViewState.IdRef="Break_1" />
-                          </Sequence>
-                        </If.Then>
-                        <If.Else>
-                          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,89" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="450,48" sap2010:WorkflowViewState.IdRef="CommentOut_6">
+                        <ui:CommentOut.Body>
+                          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="452,417" sap2010:WorkflowViewState.IdRef="Sequence_36">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
+                            <If Condition="[int_contador &gt; 3]" DisplayName="Si llega mayor que 3 el contador salimos del bucle" sap:VirtualizedContainerService.HintSize="418,357" sap2010:WorkflowViewState.IdRef="If_8">
+                              <If.Then>
+                                <Sequence sap2010:Annotation.AnnotationText="" DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,139" sap2010:WorkflowViewState.IdRef="Sequence_25">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <ui:Break sap:VirtualizedContainerService.HintSize="382,48" sap2010:WorkflowViewState.IdRef="Break_1" />
+                                </Sequence>
+                              </If.Then>
+                              <If.Else>
+                                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,89" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </Sequence>
+                              </If.Else>
+                            </If>
                           </Sequence>
-                        </If.Else>
-                      </If>
+                        </ui:CommentOut.Body>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </ui:CommentOut>
                     </Sequence>
                   </ui:InterruptibleWhile.Body>
+                  <ui:InterruptibleWhile.Condition>
+                    <VisualBasicValue x:TypeArguments="x:Boolean" DisplayName="Visual basic value" ExpressionText="boo_existeLibro and int_contador &lt; 4" />
+                  </ui:InterruptibleWhile.Condition>
                 </ui:InterruptibleWhile>
-                <ui:OutputDataTable DataTable="[dt_libros]" DisplayName="Output Data Table as Text" sap:VirtualizedContainerService.HintSize="470,103" sap2010:WorkflowViewState.IdRef="OutputDataTable_1" Text="[out_dtatablelibros]" />
+                <ui:OutputDataTable DataTable="[dt_libros]" DisplayName="Output Data Table as Text" sap:VirtualizedContainerService.HintSize="486,112" sap2010:WorkflowViewState.IdRef="OutputDataTable_1" Text="[out_dtatablelibros]" />
+                <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="486,108" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[out_dtatablelibros]" />
               </Sequence>
             </Sequence>
           </ActivityAction>
         </ui:BrowserScope.Body>
       </ui:BrowserScope>
     </Sequence>
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="606,48" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="622,1315" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
