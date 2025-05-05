@@ -122,7 +122,7 @@
       <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="AddQueueItems" sap:VirtualizedContainerService.HintSize="1580,2357" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="AddQueueItems" sap:VirtualizedContainerService.HintSize="1653,2994" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="str_asunto" />
       <Variable x:TypeArguments="x:String" Name="str_cuerpo" />
@@ -142,7 +142,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="AddQueueItems" sap:VirtualizedContainerService.HintSize="619,2334" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence DisplayName="AddQueueItems" sap:VirtualizedContainerService.HintSize="619,2971" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <Sequence.Variables>
         <Variable x:TypeArguments="scg:IEnumerable(ui:QueueItem)" Name="ien_queueItems" />
       </Sequence.Variables>
@@ -159,28 +159,28 @@
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ui:InterruptibleDoWhile Condition="[ien_queueItems.Count &gt; 0]" CurrentIndex="{x:Null}" DisplayName="Do While" sap:VirtualizedContainerService.HintSize="418,525" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1" MaxIterations="{x:Null}">
+        <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" Condition="[ien_queueItems.Count &gt; 0]" DisplayName="Do While" sap:VirtualizedContainerService.HintSize="418,526.6666666666666" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
           <ui:InterruptibleDoWhile.Body>
-            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="416,403" sap2010:WorkflowViewState.IdRef="Sequence_13">
+            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="416,404" sap2010:WorkflowViewState.IdRef="Sequence_13">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:GetQueueItems ContinueOnError="{x:Null}" DisplayName="Get Queue Items (Obtener transacciones)" Duration="{x:Null}" FilterStrategy="Equals" FolderPath="[in_Config(&quot;OrchestratorQueueFolder&quot;).ToString]" From="{x:Null}" sap:VirtualizedContainerService.HintSize="382,176" sap2010:WorkflowViewState.IdRef="GetQueueItems_1" Priority="{x:Null}" QueueItemStates="New" QueueName="[In_Config(&quot;OrchestratorQueueName&quot;).ToString]" Reference="{x:Null}" Result="[ien_queueItems]" Skip="{x:Null}" TimeoutMS="{x:Null}" To="{x:Null}" Top="{x:Null}" />
-              <ui:DeleteQueueItems ContinueOnError="{x:Null}" DisplayName="Delete Queue Items (Eliminar transacciones)" FolderPath="[in_Config(&quot;OrchestratorQueueFolder&quot;).ToString]" sap:VirtualizedContainerService.HintSize="382,167" sap2010:WorkflowViewState.IdRef="DeleteQueueItems_1" QueueItems="[ien_queueItems]" TimeoutMS="{x:Null}" />
+              <ui:GetQueueItems Duration="{x:Null}" From="{x:Null}" Priority="{x:Null}" Reference="{x:Null}" Skip="{x:Null}" TimeoutMS="{x:Null}" To="{x:Null}" Top="{x:Null}" DisplayName="Get Queue Items (Obtener transacciones)" FilterStrategy="Equals" FolderPath="[in_Config(&quot;OrchestratorQueueFolder&quot;).ToString]" sap:VirtualizedContainerService.HintSize="382,176.66666666666666" sap2010:WorkflowViewState.IdRef="GetQueueItems_1" QueueItemStates="New" QueueName="[In_Config(&quot;OrchestratorQueueName&quot;).ToString]" Result="[ien_queueItems]" />
+              <ui:DeleteQueueItems TimeoutMS="{x:Null}" DisplayName="Delete Queue Items (Eliminar transacciones)" FolderPath="[in_Config(&quot;OrchestratorQueueFolder&quot;).ToString]" sap:VirtualizedContainerService.HintSize="382,167.33333333333334" sap2010:WorkflowViewState.IdRef="DeleteQueueItems_1" QueueItems="[ien_queueItems]" />
             </Sequence>
           </ui:InterruptibleDoWhile.Body>
         </ui:InterruptibleDoWhile>
       </Sequence>
-      <Sequence DisplayName="Añadimos correos a la cola de proceso" sap:VirtualizedContainerService.HintSize="585,2194" sap2010:WorkflowViewState.IdRef="Sequence_21">
+      <Sequence DisplayName="Añadimos correos a la cola de proceso" sap:VirtualizedContainerService.HintSize="585,2831" sap2010:WorkflowViewState.IdRef="Sequence_21">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <TryCatch DisplayName="Controlamos errores a la hora de incluir elementos a la cola" sap:VirtualizedContainerService.HintSize="551,2111" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+        <TryCatch DisplayName="Controlamos errores a la hora de incluir elementos a la cola" sap:VirtualizedContainerService.HintSize="551,2748" sap2010:WorkflowViewState.IdRef="TryCatch_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -188,7 +188,7 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <TryCatch.Try>
-            <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="549,1633" sap2010:WorkflowViewState.IdRef="Sequence_16">
+            <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="549,1893" sap2010:WorkflowViewState.IdRef="Sequence_16">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -202,7 +202,7 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:BuildDataTable>
-              <ui:GetRobotCredential AssetName="CredentialGmail" CacheStrategy="None" DisplayName="Importamos las credenciales del correo" FolderPath="nexusdatacorporation@gmail.com's workspace" sap:VirtualizedContainerService.HintSize="515,57" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[str_password]" TimeoutMS="{x:Null}" Username="[str_emailNexus]">
+              <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="CredentialGmail" CacheStrategy="None" DisplayName="Importamos las credenciales del correo" FolderPath="nexusdatacorporation@gmail.com's workspace" sap:VirtualizedContainerService.HintSize="515,57" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[str_password]" Username="[str_emailNexus]">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -210,8 +210,8 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:GetRobotCredential>
-              <ui:GetIMAPMailMessages ClientName="{x:Null}" ClientVersion="{x:Null}" DeleteMessages="False" DisplayName="Recibimos todos los correos sin leer de la cuenta y los marcamos como leidos" Email="[str_emailNexus]" EnableSSL="True" FilterExpression="{x:Null}" FilterExpressionCharacterSet="{x:Null}" sap:VirtualizedContainerService.HintSize="515,57" sap2010:WorkflowViewState.IdRef="GetIMAPMailMessages_1" IgnoreCRL="{x:Null}" MailFolder="Inbox" MarkAsRead="False" Messages="[lst_emails]" OnlyUnreadMessages="False" OrderByDate="NewestFirst" Password="{x:Null}" Port="993" SecureConnection="Auto" SecurePassword="[str_password]" Server="imap.gmail.com" TimeoutMS="{x:Null}" Top="1" />
-              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Logon a ChatGPT" sap:VirtualizedContainerService.HintSize="515,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" Level="{x:Null}" LogEntry="{x:Null}" LogExit="{x:Null}" Timeout="{x:Null}" UnSafe="False" WorkflowFileName="Modules\Login_ChatGPT.xaml">
+              <ui:GetIMAPMailMessages ClientName="{x:Null}" ClientVersion="{x:Null}" FilterExpression="{x:Null}" FilterExpressionCharacterSet="{x:Null}" Password="{x:Null}" TimeoutMS="{x:Null}" DeleteMessages="False" DisplayName="Recibimos todos los correos sin leer de la cuenta y los marcamos como leidos" Email="[str_emailNexus]" EnableSSL="True" sap:VirtualizedContainerService.HintSize="515,57" sap2010:WorkflowViewState.IdRef="GetIMAPMailMessages_1" MailFolder="Inbox" MarkAsRead="False" Messages="[lst_emails]" OnlyUnreadMessages="False" OrderByDate="NewestFirst" Port="993" SecureConnection="Auto" SecurePassword="[str_password]" Server="imap.gmail.com" Top="2" />
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Logon a ChatGPT" sap:VirtualizedContainerService.HintSize="515,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Modules\Login_ChatGPT.xaml">
                 <ui:InvokeWorkflowFile.Arguments>
                   <OutArgument x:TypeArguments="ui:Browser" x:Key="out_bro_chatGPT">[bro_chatGPT]</OutArgument>
                   <InArgument x:TypeArguments="x:String" x:Key="in_url_ChatGPT">[In_Config("urlChatGPT").ToString]</InArgument>
@@ -223,19 +223,19 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:InvokeWorkflowFile>
-              <ui:ForEach x:TypeArguments="snm:MailMessage" CurrentIndex="{x:Null}" DisplayName="Ejecutamos por cada elemento correo recibido" sap:VirtualizedContainerService.HintSize="515,846" sap2010:WorkflowViewState.IdRef="ForEach`1_1" MaxIterations="{x:Null}" Values="[lst_emails]">
+              <ui:ForEach x:TypeArguments="snm:MailMessage" CurrentIndex="{x:Null}" DisplayName="Ejecutamos por cada elemento correo recibido" sap:VirtualizedContainerService.HintSize="515,848" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[lst_emails]">
                 <ui:ForEach.Body>
                   <ActivityAction x:TypeArguments="snm:MailMessage">
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="snm:MailMessage" Name="email" />
                     </ActivityAction.Argument>
-                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="513,716" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="513,718" sap2010:WorkflowViewState.IdRef="Sequence_17">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Consulta_ChatGPT - Invoke Workflow File (Modules\Consulta_ChatGPT.xaml)" sap:VirtualizedContainerService.HintSize="479,175" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" Level="{x:Null}" LogEntry="{x:Null}" LogExit="{x:Null}" Timeout="{x:Null}" UnSafe="False" WorkflowFileName="Modules\Consulta_ChatGPT.xaml">
+                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Consulta_ChatGPT - Invoke Workflow File (Modules\Consulta_ChatGPT.xaml)" sap:VirtualizedContainerService.HintSize="479,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Modules\Consulta_ChatGPT.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
                           <InArgument x:TypeArguments="ui:Browser" x:Key="in_bro_chatGPT">[bro_chatGPT]</InArgument>
                           <InArgument x:TypeArguments="x:String" x:Key="in_str_CuerpoMensaje">[email.Headers("PlainText")]</InArgument>
@@ -289,7 +289,7 @@
                           </scg:List>
                         </ui:MultipleAssign.AssignOperations>
                       </ui:MultipleAssign>
-                      <ui:AddDataRow ArrayRow="[new Object () {str_reference,str_asunto,str_remitente,str_cuerpo,str_RespuestaChatGPT}]" DataRow="{x:Null}" DataTable="[dt_emails]" DisplayName="Por cada grupo de valores genera una fila en la tabla" sap:VirtualizedContainerService.HintSize="479,209" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+                      <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[new Object () {str_reference,str_asunto,str_remitente,str_cuerpo,str_RespuestaChatGPT}]" DataTable="[dt_emails]" DisplayName="Por cada grupo de valores genera una fila en la tabla" sap:VirtualizedContainerService.HintSize="479,209" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
                     </Sequence>
                   </ActivityAction>
                 </ui:ForEach.Body>
@@ -300,17 +300,18 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:ForEach>
-              <ui:BulkAddQueueItems ContinueOnError="{x:Null}" DisplayName="Volcamos la tabla para generar las colas de proceso" FolderPath="nexusdatacorporation@gmail.com's workspace" sap:VirtualizedContainerService.HintSize="515,57" sap2010:WorkflowViewState.IdRef="BulkAddQueueItems_3" QueueItemsDataTable="[dt_emails]" QueueName="Recomendaciones" Result="{x:Null}" TimeoutMS="{x:Null}">
+              <ui:Comment sap:VirtualizedContainerService.HintSize="515,89" sap2010:WorkflowViewState.IdRef="Comment_1" Text="añadir en el config" />
+              <ui:BulkAddQueueItems TimeoutMS="{x:Null}" DisplayName="Volcamos la tabla para generar las colas de proceso" FolderPath="nexusdatacorporation@gmail.com's workspace" sap:VirtualizedContainerService.HintSize="515,226" sap2010:WorkflowViewState.IdRef="BulkAddQueueItems_3" QueueItemsDataTable="[dt_emails]" QueueName="Recomendaciones">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:BulkAddQueueItems>
               <ui:NavigateTo Browser="[bro_chatGPT]" DisplayName="Hacemos logoff de la sesión de ChatGPT" sap:VirtualizedContainerService.HintSize="515,117" sap2010:WorkflowViewState.IdRef="NavigateTo_1" Url="https://chatgpt.com/auth/logout" />
               <Delay Duration="00:00:02" sap:VirtualizedContainerService.HintSize="515,122" sap2010:WorkflowViewState.IdRef="Delay_1" />
-              <ui:CloseTab Browser="[bro_chatGPT]" ContinueOnError="{x:Null}" DisplayName="Cerramos ventana ChatGPT" sap:VirtualizedContainerService.HintSize="515,48" sap2010:WorkflowViewState.IdRef="CloseTab_1" />
+              <ui:CloseTab Browser="[bro_chatGPT]" DisplayName="Cerramos ventana ChatGPT" sap:VirtualizedContainerService.HintSize="515,48" sap2010:WorkflowViewState.IdRef="CloseTab_1" />
             </Sequence>
           </TryCatch.Try>
           <TryCatch.Catches>
@@ -319,13 +320,30 @@
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="549,224" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="549,281" sap2010:WorkflowViewState.IdRef="Sequence_19">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="515,164" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Error" Message="[&quot;Excepcion de sistema : &quot; + exception.Message]" />
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="515,173" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Error" Message="[&quot;Excepcion de sistema : &quot; + exception.Message]" />
+                  <Rethrow sap:VirtualizedContainerService.HintSize="515,48" sap2010:WorkflowViewState.IdRef="Rethrow_1" />
+                </Sequence>
+              </ActivityAction>
+            </Catch>
+            <Catch x:TypeArguments="ui:BusinessRuleException" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+              <ActivityAction x:TypeArguments="ui:BusinessRuleException">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="ui:BusinessRuleException" Name="exception" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="549,281" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="515,173" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Error" Message="[&quot;Excepcion de negocio : &quot; + exception.Message]" />
+                  <Rethrow sap:VirtualizedContainerService.HintSize="515,48" sap2010:WorkflowViewState.IdRef="Rethrow_2" />
                 </Sequence>
               </ActivityAction>
             </Catch>
