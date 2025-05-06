@@ -1,4 +1,4 @@
-﻿<Activity mc:Ignorable="sap sap2010" x:Class="Login_ChatGPT" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Login_ChatGPT" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="out_bro_chatGPT" Type="OutArgument(ui:Browser)" />
     <x:Property Name="in_url_ChatGPT" Type="InArgument(x:String)" />
@@ -91,7 +91,7 @@
       <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Login_ChatGPT" sap:VirtualizedContainerService.HintSize="1582,2503" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Login_ChatGPT" sap:VirtualizedContainerService.HintSize="1287,2503" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="boo_existeInicio" />
       <Variable x:TypeArguments="ss:SecureString" Name="srt_passwordChatGPT" />
@@ -257,9 +257,9 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:Click>
-                    <ui:Comment sap:VirtualizedContainerService.HintSize="418,107.33333333333333" sap2010:WorkflowViewState.IdRef="Comment_3" Text="Comprobar si estoy dentro y si no estoy dentro lanzar una excepcion" />
-                    <ui:Comment sap:VirtualizedContainerService.HintSize="418,107.33333333333333" sap2010:WorkflowViewState.IdRef="Comment_2" Text="Comprobar que pasa si cambiamos contraseña de google" />
-                    <ui:UiElementExists DisplayName="Existe error de incio de sesión ?" Exists="[boo_inicioSesionErroneo]" sap:VirtualizedContainerService.HintSize="418,139.33333333333334" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
+                    <ui:Comment sap:VirtualizedContainerService.HintSize="418,107" sap2010:WorkflowViewState.IdRef="Comment_3" Text="Comprobar si estoy dentro y si no estoy dentro lanzar una excepcion" />
+                    <ui:Comment sap:VirtualizedContainerService.HintSize="418,107" sap2010:WorkflowViewState.IdRef="Comment_2" Text="Comprobar que pasa si cambiamos contraseña de google" />
+                    <ui:UiElementExists DisplayName="Existe error de incio de sesión ?" Exists="[boo_inicioSesionErroneo]" sap:VirtualizedContainerService.HintSize="418,139" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
                       <ui:UiElementExists.Target>
                         <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b06d7218-76bc-488a-b32a-b611a5d0e5d7" InformativeScreenshot="362855fcb3ecb104a36a517517121d92" Selector="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;c-wiz&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;form&amp;gt;span&amp;gt;section&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;span' isleaf='1' tag='SPAN' /&gt;" TimeoutMS="2000" WaitForReady="COMPLETE" />
                       </ui:UiElementExists.Target>
