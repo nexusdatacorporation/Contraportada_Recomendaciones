@@ -2,6 +2,7 @@
   <x:Members>
     <x:Property Name="out_bro_chatGPT" Type="OutArgument(ui:Browser)" />
     <x:Property Name="in_url_ChatGPT" Type="InArgument(x:String)" />
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
@@ -90,7 +91,7 @@
       <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Login_ChatGPT" sap:VirtualizedContainerService.HintSize="1011.3333333333333,2606.6666666666665" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Login_ChatGPT" sap:VirtualizedContainerService.HintSize="1582,2503" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="boo_existeInicio" />
       <Variable x:TypeArguments="ss:SecureString" Name="srt_passwordChatGPT" />
@@ -101,29 +102,28 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="Inicio sesion en chatGPT" sap:VirtualizedContainerService.HintSize="556,2584" sap2010:WorkflowViewState.IdRef="Sequence_4">
+    <Sequence DisplayName="Inicio sesion en chatGPT" sap:VirtualizedContainerService.HintSize="556,2480" sap2010:WorkflowViewState.IdRef="Sequence_4">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:Comment sap:VirtualizedContainerService.HintSize="522,88" sap2010:WorkflowViewState.IdRef="Comment_1" Text="Los datos los recogemos del config" />
-      <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="CredentialCHATGPT" CacheStrategy="None" DisplayName="Recogemos credenciales de ChatGPT del orquestador" FolderPath="nexusdatacorporation@gmail.com's workspace" sap:VirtualizedContainerService.HintSize="522,176.66666666666666" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[srt_passwordChatGPT]" Username="[srt_userChatGPT]" />
-      <ui:OpenBrowser AutomaticallyDownloadWebDriver="{x:Null}" CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" BrowserType="Chrome" DisplayName="Abrimos página de inicio de chatGPT" sap:VirtualizedContainerService.HintSize="522,2236.6666666666665" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" UiBrowser="[out_bro_chatGPT]" Url="[in_url_ChatGPT]">
+      <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="CredentialCHATGPT" CacheStrategy="None" DisplayName="Recogemos credenciales de ChatGPT del orquestador" FolderPath="[in_Config(&quot;OrchestratorQueueFolder&quot;).ToString]" sap:VirtualizedContainerService.HintSize="522,175" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[srt_passwordChatGPT]" Username="[srt_userChatGPT]" />
+      <ui:OpenBrowser AutomaticallyDownloadWebDriver="{x:Null}" CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" BrowserType="Chrome" DisplayName="Abrimos página de inicio de chatGPT" sap:VirtualizedContainerService.HintSize="522,2222" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" UiBrowser="[out_bro_chatGPT]" Url="[in_url_ChatGPT]">
         <ui:OpenBrowser.Body>
           <ActivityAction x:TypeArguments="x:Object">
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="488,2086.6666666666665" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="488,2074" sap2010:WorkflowViewState.IdRef="Sequence_2">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="454,57.333333333333336" sap2010:WorkflowViewState.IdRef="MaximizeWindow_1" />
-              <ui:UiElementExists DisplayName="Existe iniciar sesion" Exists="[boo_existeInicio]" sap:VirtualizedContainerService.HintSize="454,139.33333333333334" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+              <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="454,57" sap2010:WorkflowViewState.IdRef="MaximizeWindow_1" />
+              <ui:UiElementExists DisplayName="Existe iniciar sesion" Exists="[boo_existeInicio]" sap:VirtualizedContainerService.HintSize="454,139" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
                 <ui:UiElementExists.Target>
                   <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="6cea654b-518b-4bd5-9069-7c679cd06efb" InformativeScreenshot="a7135e914a7e2fa45be730b940877bad" Selector="&lt;webctrl parentid='conversation-header-actions' data-testid='login-button' tag='BUTTON' /&gt;" TimeoutMS="2000" WaitForReady="COMPLETE" />
                 </ui:UiElementExists.Target>
@@ -134,7 +134,7 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:UiElementExists>
-              <If Condition="[boo_existeInicio]" DisplayName="Existe boton de iniciar sesión ?" sap:VirtualizedContainerService.HintSize="454,1830" sap2010:WorkflowViewState.IdRef="If_1">
+              <If Condition="[boo_existeInicio]" DisplayName="Existe boton de iniciar sesión ?" sap:VirtualizedContainerService.HintSize="454,1818" sap2010:WorkflowViewState.IdRef="If_1">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -142,7 +142,7 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
                 <If.Then>
-                  <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="452,1608.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="452,1600" sap2010:WorkflowViewState.IdRef="Sequence_3">
                     <Sequence.Variables>
                       <Variable x:TypeArguments="x:Boolean" Name="boo_inicioSesionErroneo" />
                       <Variable x:TypeArguments="x:Boolean" Name="boo_ExistPopUP" />
@@ -153,7 +153,7 @@
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:UiElementExists DisplayName="Chequear si existe pop-up de inicio de sesión. " Exists="[boo_ExistPopUP]" sap:VirtualizedContainerService.HintSize="418,139.33333333333334" sap2010:WorkflowViewState.IdRef="UiElementExists_3">
+                    <ui:UiElementExists DisplayName="Chequear si existe pop-up de inicio de sesión. " Exists="[boo_ExistPopUP]" sap:VirtualizedContainerService.HintSize="418,139" sap2010:WorkflowViewState.IdRef="UiElementExists_3">
                       <ui:UiElementExists.Target>
                         <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="4b135eea-935d-47eb-b50d-1acc04a32dd7" InformativeScreenshot="6dddca3f1b69f08c068d46f8a188f826" Selector="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div' tag='DIV' /&gt;" WaitForReady="COMPLETE">
                           <ui:Target.TimeoutMS>
@@ -168,7 +168,7 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:UiElementExists>
-                    <If Condition="[boo_ExistPopUP]" DisplayName="Exsite pop-up de incio de sesión ?" sap:VirtualizedContainerService.HintSize="418,520" sap2010:WorkflowViewState.IdRef="If_3">
+                    <If Condition="[boo_ExistPopUP]" DisplayName="Exsite pop-up de incio de sesión ?" sap:VirtualizedContainerService.HintSize="418,518" sap2010:WorkflowViewState.IdRef="If_3">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -232,7 +232,7 @@
                         </Sequence>
                       </If.Else>
                     </If>
-                    <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Hacemos click en Continuar con Google" sap:VirtualizedContainerService.HintSize="418,139.33333333333334" sap2010:WorkflowViewState.IdRef="Click_9" KeyModifiers="None" MouseButton="BTN_LEFT">
+                    <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Hacemos click en Continuar con Google" sap:VirtualizedContainerService.HintSize="418,139" sap2010:WorkflowViewState.IdRef="Click_9" KeyModifiers="None" MouseButton="BTN_LEFT">
                       <ui:Click.CursorPosition>
                         <ui:CursorPosition Position="Center">
                           <ui:CursorPosition.OffsetX>
@@ -270,7 +270,7 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:UiElementExists>
-                    <If Condition="[boo_inicioSesionErroneo]" DisplayName="Inicio de sesion erróneo ?" sap:VirtualizedContainerService.HintSize="418,396" sap2010:WorkflowViewState.IdRef="If_2">
+                    <If Condition="[boo_inicioSesionErroneo]" DisplayName="Inicio de sesion erróneo ?" sap:VirtualizedContainerService.HintSize="418,391" sap2010:WorkflowViewState.IdRef="If_2">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -278,17 +278,17 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                       <If.Then>
-                        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,174.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,173" sap2010:WorkflowViewState.IdRef="Sequence_5">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <Throw DisplayName="Si es erróneo se lanza excepción SL-01" Exception="[New BusinessRuleException(&quot;SL-01, error iniciando sesion en ChatGPT&quot;)]" sap:VirtualizedContainerService.HintSize="382,114.66666666666667" sap2010:WorkflowViewState.IdRef="Throw_1" />
+                          <Throw DisplayName="Si es erróneo se lanza excepción SL-01" Exception="[New BusinessRuleException(&quot;SL-01, error iniciando sesion en ChatGPT&quot;)]" sap:VirtualizedContainerService.HintSize="382,113" sap2010:WorkflowViewState.IdRef="Throw_1" />
                         </Sequence>
                       </If.Then>
                       <If.Else>
-                        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,90.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,89" sap2010:WorkflowViewState.IdRef="Sequence_6">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -300,7 +300,7 @@
                   </Sequence>
                 </If.Then>
                 <If.Else>
-                  <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="452,90.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                  <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="452,89" sap2010:WorkflowViewState.IdRef="Sequence_7">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>

@@ -134,7 +134,7 @@
       <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1653,2737" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1582,1983" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="str_Remitente" />
       <Variable x:TypeArguments="s:Exception" Name="sys_errorSystem" />
@@ -144,14 +144,6 @@
       <Variable x:TypeArguments="x:String" Name="str_ChatGPT" />
       <Variable x:TypeArguments="ui:Browser" Name="bro_TodosTusLibros" />
       <Variable x:TypeArguments="sd:DataTable" Name="dt_libros" />
-      <Variable x:TypeArguments="sd:DataTable" Name="dtlibros">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:String x:Key="SourceIdRef">InvokeWorkflowFile_1</x:String>
-            <x:String x:Key="SourcePropertyName">dt_libros</x:String>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </Variable>
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -159,19 +151,19 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="513,175" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
-    <ui:Comment sap:VirtualizedContainerService.HintSize="513,145" sap2010:WorkflowViewState.IdRef="Comment_1" Text="Por comodidad podemos extraer los datos del elemento al principio del Process. Asi tenemos la falicidad de proporcionarselo al invoke que queramos. " />
-    <Sequence DisplayName="ObtenerDatosTransaccion" sap:VirtualizedContainerService.HintSize="513,448" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="468,173" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
+    <ui:Comment sap:VirtualizedContainerService.HintSize="468,145" sap2010:WorkflowViewState.IdRef="Comment_1" Text="Por comodidad podemos extraer los datos del elemento al principio del Process. Asi tenemos la falicidad de proporcionarselo al invoke que queramos. " />
+    <Sequence DisplayName="ObtenerDatosTransaccion" sap:VirtualizedContainerService.HintSize="468,57" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <Sequence.Variables>
         <Variable x:TypeArguments="njl:JObject" Name="jso_ChatGPT" />
       </Sequence.Variables>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="479,242" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+      <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="486,241" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
         <ui:MultipleAssign.AssignOperations>
           <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
             <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -209,17 +201,28 @@
           </scg:List>
         </ui:MultipleAssign.AssignOperations>
       </ui:MultipleAssign>
-      <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="479,114" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[jso_ChatGPT]" JsonSample="" JsonString="[str_ChatGPT]" />
+      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="486,275" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+        <ui:CommentOut.Body>
+          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,173" sap2010:WorkflowViewState.IdRef="Sequence_14">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="416,113" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[jso_ChatGPT]" JsonSample="" JsonString="[str_ChatGPT]" />
+          </Sequence>
+        </ui:CommentOut.Body>
+      </ui:CommentOut>
     </Sequence>
-    <Sequence DisplayName="Inicializamos las variables de error System y Business" sap:VirtualizedContainerService.HintSize="513,499" sap2010:WorkflowViewState.IdRef="Sequence_9">
+    <Sequence DisplayName="Inicializamos las variables de error System y Business" sap:VirtualizedContainerService.HintSize="468,57" sap2010:WorkflowViewState.IdRef="Sequence_9">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:Comment sap:VirtualizedContainerService.HintSize="434,186" sap2010:WorkflowViewState.IdRef="Comment_2" Text="Nuestras dos variables que almacenan error de sistema y de negocio, respectivamente, al entrar en el Process las ponemos a Nothing por si almacenan el error de un elemento de cola anterior, las limpiamos y empezamos de nuevo" />
-      <Assign sap:VirtualizedContainerService.HintSize="434,115" sap2010:WorkflowViewState.IdRef="Assign_5">
+      <ui:Comment sap:VirtualizedContainerService.HintSize="434,183" sap2010:WorkflowViewState.IdRef="Comment_2" Text="Nuestras dos variables que almacenan error de sistema y de negocio, respectivamente, al entrar en el Process las ponemos a Nothing por si almacenan el error de un elemento de cola anterior, las limpiamos y empezamos de nuevo" />
+      <Assign sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_5">
         <Assign.To>
           <OutArgument x:TypeArguments="s:Exception">[sys_errorSystem]</OutArgument>
         </Assign.To>
@@ -227,7 +230,7 @@
           <InArgument x:TypeArguments="s:Exception">[Nothing]</InArgument>
         </Assign.Value>
       </Assign>
-      <Assign sap:VirtualizedContainerService.HintSize="434,106" sap2010:WorkflowViewState.IdRef="Assign_6">
+      <Assign sap:VirtualizedContainerService.HintSize="434,105" sap2010:WorkflowViewState.IdRef="Assign_6">
         <Assign.To>
           <OutArgument x:TypeArguments="ui:BusinessRuleException">[bus_errorBusiness]</OutArgument>
         </Assign.To>
@@ -236,26 +239,33 @@
         </Assign.Value>
       </Assign>
     </Sequence>
-    <ui:Comment sap:VirtualizedContainerService.HintSize="513,396" sap2010:WorkflowViewState.IdRef="Comment_3" Text="Aqui vamos a tener la siguiente estructura: &#xA;&#xA;Invoke&#xA;&#xA;If system exception: &#xA;&#xA;throw en caso de que si&#xA;&#xA;If business exception: &#xA;&#xA;gestiono excepcion &#xA;&#xA;throw en caso de que si&#xA;&#xA;Invoke &#xA;&#xA;.... y de nuevo lo mismo" />
-    <Assign sap:VirtualizedContainerService.HintSize="513,115" sap2010:WorkflowViewState.IdRef="Assign_7">
-      <Assign.To>
-        <OutArgument x:TypeArguments="ui:Browser">[bro_TodosTusLibros]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="ui:Browser">[in_bro_AddTodosTusLibros]</InArgument>
-      </Assign.Value>
-    </Assign>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Llamamos al prceso de extraccion de libros" sap:VirtualizedContainerService.HintSize="513,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Modules\Extraer_Libros.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <OutArgument x:TypeArguments="s:Exception" x:Key="out_errorSystem">[sys_errorSystem]</OutArgument>
-        <OutArgument x:TypeArguments="ui:BusinessRuleException" x:Key="out_errorBusiness">[bus_errorBusiness]</OutArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_str_urlTodosTusLibros">[in_Config("urlTodosTusLibros").ToString]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_str_ChatGPT">[str_ChatGPT]</InArgument>
-        <InArgument x:TypeArguments="ui:Browser" x:Key="in_bro_TodosTusLibros">[bro_TodosTusLibros]</InArgument>
-        <OutArgument x:TypeArguments="sd:DataTable" x:Key="dt_libros">[dt_libros]</OutArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
-    <If Condition="[sys_errorSystem is Nothing]" sap:VirtualizedContainerService.HintSize="513,57" sap2010:WorkflowViewState.IdRef="If_1">
+    <ui:Comment sap:VirtualizedContainerService.HintSize="468,396" sap2010:WorkflowViewState.IdRef="Comment_3" Text="Aqui vamos a tener la siguiente estructura: &#xA;&#xA;Invoke&#xA;&#xA;If system exception: &#xA;&#xA;throw en caso de que si&#xA;&#xA;If business exception: &#xA;&#xA;gestiono excepcion &#xA;&#xA;throw en caso de que si&#xA;&#xA;Invoke &#xA;&#xA;.... y de nuevo lo mismo" />
+    <Sequence DisplayName="Invocamos proceso de extraccion de libros" sap:VirtualizedContainerService.HintSize="468,374" sap2010:WorkflowViewState.IdRef="Sequence_15">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Assign sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_7">
+        <Assign.To>
+          <OutArgument x:TypeArguments="ui:Browser">[bro_TodosTusLibros]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="ui:Browser">[in_bro_AddTodosTusLibros]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Llamamos al prceso de extraccion de libros" sap:VirtualizedContainerService.HintSize="434,168" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Modules\Extraer_Libros.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <OutArgument x:TypeArguments="s:Exception" x:Key="out_errorSystem">[sys_errorSystem]</OutArgument>
+          <OutArgument x:TypeArguments="ui:BusinessRuleException" x:Key="out_errorBusiness">[bus_errorBusiness]</OutArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_str_urlTodosTusLibros">[in_Config("urlTodosTusLibros").ToString]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_str_ChatGPT">[str_ChatGPT]</InArgument>
+          <InArgument x:TypeArguments="ui:Browser" x:Key="in_bro_TodosTusLibros">[bro_TodosTusLibros]</InArgument>
+          <OutArgument x:TypeArguments="sd:DataTable" x:Key="dt_libros">[dt_libros]</OutArgument>
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+    </Sequence>
+    <If Condition="[sys_errorSystem is Nothing]" sap:VirtualizedContainerService.HintSize="468,57" sap2010:WorkflowViewState.IdRef="If_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -263,28 +273,28 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,226" sap2010:WorkflowViewState.IdRef="Sequence_5">
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,224" sap2010:WorkflowViewState.IdRef="Sequence_5">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382,166" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Continuo la ejecucion&quot;]" />
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382,164" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Continuo la ejecucion&quot;]" />
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,174" sap2010:WorkflowViewState.IdRef="Sequence_6">
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,173" sap2010:WorkflowViewState.IdRef="Sequence_6">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Throw Exception="[sys_errorSystem]" sap:VirtualizedContainerService.HintSize="382,114" sap2010:WorkflowViewState.IdRef="Throw_1" />
+          <Throw Exception="[sys_errorSystem]" sap:VirtualizedContainerService.HintSize="382,113" sap2010:WorkflowViewState.IdRef="Throw_1" />
         </Sequence>
       </If.Else>
     </If>
-    <ui:Comment sap:VirtualizedContainerService.HintSize="513,202" sap2010:WorkflowViewState.IdRef="Comment_4" Text="En caso de que quiera gestionar cada business de una manera, por ejemplo, enviando en cada caso un email, lo hago en este módulo. Dentro tengo un if que evalua si mi business contiene el código SL-01, SL-02.... y hará lo que tenga que hacer en caso de que se de uno de ellos. " />
-    <If Condition="[bus_errorBusiness is Nothing]" sap:VirtualizedContainerService.HintSize="513,57" sap2010:WorkflowViewState.IdRef="If_2">
+    <ui:Comment sap:VirtualizedContainerService.HintSize="468,202" sap2010:WorkflowViewState.IdRef="Comment_4" Text="En caso de que quiera gestionar cada business de una manera, por ejemplo, enviando en cada caso un email, lo hago en este módulo. Dentro tengo un if que evalua si mi business contiene el código SL-01, SL-02.... y hará lo que tenga que hacer en caso de que se de uno de ellos. " />
+    <If Condition="[bus_errorBusiness is Nothing]" sap:VirtualizedContainerService.HintSize="468,57" sap2010:WorkflowViewState.IdRef="If_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -317,14 +327,14 @@
         </Sequence>
       </If.Else>
     </If>
-    <ui:Comment sap:VirtualizedContainerService.HintSize="513,89" sap2010:WorkflowViewState.IdRef="Comment_5" Text="modulo escribir en excel" />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="EscribirDatosExcel - Invoke Workflow File (Modules\EscribirDatosExcel.xaml)" sap:VirtualizedContainerService.HintSize="513,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Modules\EscribirDatosExcel.xaml">
+    <ui:Comment sap:VirtualizedContainerService.HintSize="468,88" sap2010:WorkflowViewState.IdRef="Comment_5" Text="modulo escribir en excel" />
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="EscribirDatosExcel - Invoke Workflow File (Modules\EscribirDatosExcel.xaml)" sap:VirtualizedContainerService.HintSize="468,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Modules\EscribirDatosExcel.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="sd:DataTable" x:Key="in_libros">[dt_libros]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_email">[str_Remitente]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <If Condition="[sys_errorSystem is Nothing]" sap:VirtualizedContainerService.HintSize="513,57" sap2010:WorkflowViewState.IdRef="If_3">
+    <If Condition="[sys_errorSystem is Nothing]" sap:VirtualizedContainerService.HintSize="468,57" sap2010:WorkflowViewState.IdRef="If_3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -352,7 +362,7 @@
         </Sequence>
       </If.Else>
     </If>
-    <If Condition="[bus_errorBusiness is Nothing]" sap:VirtualizedContainerService.HintSize="513,48" sap2010:WorkflowViewState.IdRef="If_4">
+    <If Condition="[bus_errorBusiness is Nothing]" sap:VirtualizedContainerService.HintSize="468,48" sap2010:WorkflowViewState.IdRef="If_4">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>

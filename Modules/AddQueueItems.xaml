@@ -120,9 +120,10 @@
       <AssemblyReference>UiPath.Platform</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="AddQueueItems" sap:VirtualizedContainerService.HintSize="1653,2994" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="AddQueueItems" sap:VirtualizedContainerService.HintSize="1582,3137" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="str_asunto" />
       <Variable x:TypeArguments="x:String" Name="str_cuerpo" />
@@ -136,13 +137,14 @@
       <Variable x:TypeArguments="scg:List(snm:MailMessage)" Name="lst_emails" />
       <Variable x:TypeArguments="x:String" Name="str_RespuestaChatGPT" />
       <Variable x:TypeArguments="ui:Browser" Name="bro_chatGPT" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="Config" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="AddQueueItems" sap:VirtualizedContainerService.HintSize="619,2971" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence DisplayName="AddQueueItems" sap:VirtualizedContainerService.HintSize="619,3114" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <Sequence.Variables>
         <Variable x:TypeArguments="scg:IEnumerable(ui:QueueItem)" Name="ien_queueItems" />
       </Sequence.Variables>
@@ -173,14 +175,14 @@
           </ui:InterruptibleDoWhile.Body>
         </ui:InterruptibleDoWhile>
       </Sequence>
-      <Sequence DisplayName="Añadimos correos a la cola de proceso" sap:VirtualizedContainerService.HintSize="585,2831" sap2010:WorkflowViewState.IdRef="Sequence_21">
+      <Sequence DisplayName="Añadimos correos a la cola de proceso" sap:VirtualizedContainerService.HintSize="585,2974" sap2010:WorkflowViewState.IdRef="Sequence_21">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <TryCatch DisplayName="Controlamos errores a la hora de incluir elementos a la cola" sap:VirtualizedContainerService.HintSize="551,2748" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+        <TryCatch DisplayName="Controlamos errores a la hora de incluir elementos a la cola" sap:VirtualizedContainerService.HintSize="551,2891" sap2010:WorkflowViewState.IdRef="TryCatch_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -188,12 +190,20 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <TryCatch.Try>
-            <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="549,1893" sap2010:WorkflowViewState.IdRef="Sequence_16">
+            <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="549,2036" sap2010:WorkflowViewState.IdRef="Sequence_16">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
+              <Assign sap:VirtualizedContainerService.HintSize="515,114" sap2010:WorkflowViewState.IdRef="Assign_1">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[Config]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[In_Config]</InArgument>
+                </Assign.Value>
+              </Assign>
               <ui:BuildDataTable DataTable="[dt_emails]" DisplayName="Inicializamos la tabla con los elementos de subida a la cola" sap:VirtualizedContainerService.HintSize="515,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_2" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Reference&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Asunto&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Remitente&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Cuerpo&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;ChatGPT&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -202,10 +212,10 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:BuildDataTable>
-              <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="CredentialGmail" CacheStrategy="None" DisplayName="Importamos las credenciales del correo" FolderPath="nexusdatacorporation@gmail.com's workspace" sap:VirtualizedContainerService.HintSize="515,57" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[str_password]" Username="[str_emailNexus]">
+              <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="CredentialGmail" CacheStrategy="None" DisplayName="Importamos las credenciales del correo" FolderPath="[Config(&quot;OrchestratorQueueFolder&quot;).ToString]" sap:VirtualizedContainerService.HintSize="515,175" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[str_password]" Username="[str_emailNexus]">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
@@ -215,6 +225,7 @@
                 <ui:InvokeWorkflowFile.Arguments>
                   <OutArgument x:TypeArguments="ui:Browser" x:Key="out_bro_chatGPT">[bro_chatGPT]</OutArgument>
                   <InArgument x:TypeArguments="x:String" x:Key="in_url_ChatGPT">[In_Config("urlChatGPT").ToString]</InArgument>
+                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
                 </ui:InvokeWorkflowFile.Arguments>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -300,8 +311,7 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:ForEach>
-              <ui:Comment sap:VirtualizedContainerService.HintSize="515,89" sap2010:WorkflowViewState.IdRef="Comment_1" Text="añadir en el config" />
-              <ui:BulkAddQueueItems TimeoutMS="{x:Null}" DisplayName="Volcamos la tabla para generar las colas de proceso" FolderPath="nexusdatacorporation@gmail.com's workspace" sap:VirtualizedContainerService.HintSize="515,226" sap2010:WorkflowViewState.IdRef="BulkAddQueueItems_3" QueueItemsDataTable="[dt_emails]" QueueName="Recomendaciones">
+              <ui:BulkAddQueueItems TimeoutMS="{x:Null}" DisplayName="Volcamos la tabla para generar las colas de proceso" FolderPath="[Config(&quot;OrchestratorQueueFolder&quot;).ToString]" sap:VirtualizedContainerService.HintSize="515,226" sap2010:WorkflowViewState.IdRef="BulkAddQueueItems_3" QueueItemsDataTable="[dt_emails]" QueueName="Recomendaciones">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
